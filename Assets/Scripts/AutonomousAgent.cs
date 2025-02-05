@@ -64,8 +64,10 @@ public class AutonomousAgent : AIAgent
         Vector3 acceleration = movement.Acceleration;
         acceleration.y = 0;
         movement.Acceleration = acceleration;
-        if(movement.Direction.sqrMagnitude != 0)
+        if (movement.Direction.sqrMagnitude != 0)
+
         {
+
             transform.rotation = Quaternion.LookRotation(movement.Direction);
 
         }

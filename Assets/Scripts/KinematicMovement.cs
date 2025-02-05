@@ -1,10 +1,17 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class KinematicMovement : Movement
 {
     public override void ApplyForce(Vector3 force)
     {
         Acceleration += force;
+    }
+
+    public override void MoveTowards(Vector3 position)
+    {
+        Vector3 direction = position - transform.position;
+        ApplyForce(direction.normalized * data.maxForce);
     }
 
     private void LateUpdate()
