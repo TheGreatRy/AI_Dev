@@ -743,7 +743,7 @@ Transform:
   m_GameObject: {fileID: 8623193086983899542}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10.848093, y: -0.5, z: -4.2408285}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -768,10 +768,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: -4352379602771894420}
   data: {fileID: 11400000, guid: eabd1c66dd565374389a464d2b053960, type: 2}
-  seekPerception: {fileID: 0}
+  seekPerception: {fileID: -730251200866144287, guid: 0c689132d0d4b8b4ca37ab0a8df88836, type: 3}
   fleePerception: {fileID: 0}
-  flockPerception: {fileID: 0}
-  obstaclePerception: {fileID: 2927014825707327639}
+  flockPerception: {fileID: -454252702612779040}
+  obstaclePerception: {fileID: 0}
 --- !u!114 &-4352379602771894420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -797,10 +797,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e10d849762fda14a8f92e665cece487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: 
-  tagName: 
-  maxDistance: 0
-  maxAngle: 0
+  description: Seek - Agent01
+  tagName: Agent02
+  maxDistance: 6
+  maxAngle: 60
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -818,8 +818,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: 
   tagName: 
-  maxDistance: 0
-  maxAngle: 0
+  maxDistance: 10
+  maxAngle: 30
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295

@@ -323,7 +323,7 @@ Transform:
   m_GameObject: {fileID: 3594771622606847684}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -8.706105, y: -0.49999905, z: -4.155349}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -349,9 +349,9 @@ MonoBehaviour:
   movement: {fileID: 8777743533934069677}
   data: {fileID: 11400000, guid: 26538bda0cf84b64087afe030ab80555, type: 2}
   seekPerception: {fileID: 0}
-  fleePerception: {fileID: 0}
-  flockPerception: {fileID: 0}
-  obstaclePerception: {fileID: -2350941238759300849}
+  fleePerception: {fileID: -454252702612779040, guid: 9062ee78cc7d78642a4fd0c87e23206f, type: 3}
+  flockPerception: {fileID: -730251200866144287}
+  obstaclePerception: {fileID: 0}
 --- !u!114 &8777743533934069677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,10 +377,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e10d849762fda14a8f92e665cece487, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  description: 
-  tagName: 
-  maxDistance: 0
-  maxAngle: 0
+  description: Flee - Agent02
+  tagName: Agent01
+  maxDistance: 6
+  maxAngle: 60
   layerMask:
     serializedVersion: 2
     m_Bits: 4294967295
