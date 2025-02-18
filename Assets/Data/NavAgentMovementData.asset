@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3728af2f7a493a4a905bc20ec77d084, type: 3}
   m_Name: NavAgentMovementData
   m_EditorClassIdentifier: 
-  maxSpeed: 5
-  minSpeed: 5
+  maxSpeed: 2
+  minSpeed: 1
   maxForce: 50

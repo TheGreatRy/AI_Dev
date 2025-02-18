@@ -16,7 +16,6 @@ GameObject:
   - component: {fileID: 9105388452822596358}
   - component: {fileID: 8543361735612131785}
   - component: {fileID: 4044290322203078557}
-  - component: {fileID: -6783437278561212745}
   m_Layer: 0
   m_Name: NavAgent
   m_TagString: Untagged
@@ -181,28 +180,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!95 &-6783437278561212745
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5631359414254274513}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 9e8aad7031490084bb37c1a573393ef5, type: 3}
-  m_Controller: {fileID: 9100000, guid: a9f7ff706da88ef49b00d2d206d12e98, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 1
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &7822485592560364586
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -254,6 +231,14 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 9e8aad7031490084bb37c1a573393ef5, type: 3}
       propertyPath: m_Name
       value: Erika Archer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 9e8aad7031490084bb37c1a573393ef5, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: a9f7ff706da88ef49b00d2d206d12e98, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 9e8aad7031490084bb37c1a573393ef5, type: 3}
+      propertyPath: m_AnimatePhysics
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
