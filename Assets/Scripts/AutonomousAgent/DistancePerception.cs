@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class DistancePerception : Perception
 {
-    public override GameObject[] getGameObjects()
+    public override GameObject[] GetGameObjects()
     {
         List<GameObject> result = new List<GameObject>();
 

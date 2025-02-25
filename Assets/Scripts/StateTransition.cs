@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 /// <summary>
@@ -56,10 +57,12 @@ public class StateTransition
 	/// Adds a condition that must be met for this transition to occur.
 	/// </summary>
 	/// <param name="condition">The condition to add</param>
-	public void AddCondition(Condition condition)
+	public StateTransition AddCondition(Condition condition)
 	{
 		Debug.Assert(condition != null, "Condition is null.");
 		conditions.Add(condition);
+
+		return this;
 	}
 
 	/// <summary>
@@ -70,16 +73,36 @@ public class StateTransition
 	/// <param name="value">The value reference to check in the condition</param>
 	/// <param name="predicate">How to compare the value (Greater, Less, Equal, etc)</param>
 	/// <param name="condition">The value to compare against</param>
-	public void AddCondition<T>(ValueRef<T> value, Condition.Predicate predicate, T condition) where T : IComparable<T>
+	public StateTransition AddCondition<T>(ValueRef<T> value, Condition.Predicate predicate, T condition) where T : IComparable<T>
 	{
 		AddCondition(new ValueCondition<T>(value, predicate, condition));
+
+		return this;
 	}
 
-	/// <summary>
-	/// Removes a condition from this transition.
-	/// </summary>
-	/// <param name="condition">The condition to remove</param>
-	public void RemoveCondition(Condition condition)  // Note: Typo in method name "Remve"
+    /// <summary>
+    /// Helper method to add a boolean condition to this transition.
+    /// Creates and adds a BoolCondition that checks if a boolean value matches the expected state.
+    /// </summary>
+    /// <param name="value">The boolean value reference to check</param>
+    /// <param name="condition">The expected boolean state (defaults to true)</param>
+    /// <returns>This transition instance for method chaining</returns>
+    /// <remarks>
+    /// Can be chained with other AddCondition calls to create complex transition rules.
+    /// Example: AddCondition(isPlayerDetected).AddCondition(health, Less, 50);
+    /// </remarks>
+    public StateTransition AddCondition(ValueRef<bool> value, bool condition = true)
+    {
+        AddCondition(new BoolCondition(value, condition));
+
+        return this;
+    }
+
+    /// <summary>
+    /// Removes a condition from this transition.
+    /// </summary>
+    /// <param name="condition">The condition to remove</param>
+    public void RemoveCondition(Condition condition)  // Note: Typo in method name "Remve"
 	{
 		Debug.Assert(condition != null, "Condition is null.");
 		conditions.Remove(condition);

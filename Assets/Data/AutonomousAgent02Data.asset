@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: AutonomousAgent02Data
   m_EditorClassIdentifier: 
   displacement: 2
-  angle: -1172.5557
+  angle: 0
   radius: 3
   cohesionWeight: 0
   separationWeight: 0
   separationRadius: 0
   alignmentWeight: 0
+  obstacleWeight: 0

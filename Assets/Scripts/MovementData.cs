@@ -7,4 +7,6 @@ public class MovementData : ScriptableObject {
     [SerializeField] public float maxForce = 5;
     [SerializeField] public float turnRate = 5;
 
+    public float MaxSpeed => maxSpeed;
+
 }

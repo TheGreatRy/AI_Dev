@@ -42,7 +42,11 @@ public class NavPath : MonoBehaviour
         NavNode.ResetNodes();
 
         // Generate a new shortest path from the start node to the end node
-        NavAStar.Generate(startNode, endNode, ref path);
+
+        //A*
+        //NavAStar.Generate(startNode, endNode, ref path);
+        //Dijkstra
+        NavDijkstra.Generate(startNode, endNode, ref path);
 
         // Set the first node in the path as the new target node
         TargetNode = startNode;

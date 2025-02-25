@@ -15,13 +15,13 @@ public class AutonomousAgent : AIAgent
         //movement.ApplyForce(Vector3.forward * 10);
 
         //bounding box for movement
-        transform.position = Utils.Wrap(transform.position, new Vector3( -10, -10, -10),new Vector3( 10, 10, 10));
+        //transform.position = Utilities.Wrap(transform.position, new Vector3( -10, -10, -10),new Vector3( 10, 10, 10));
 
         //Debug.DrawRay(transform.position, transform.forward * perception.maxDistance, Color.cyan);
 
         //check to see if the agent is seeking
         if (seekPerception != null) {
-            var gameObjects = seekPerception.getGameObjects();
+            var gameObjects = seekPerception.GetGameObjects();
             if (gameObjects.Length > 0)
             {
                 Vector3 force = Seek(gameObjects[0]);
@@ -30,7 +30,7 @@ public class AutonomousAgent : AIAgent
         }
         //check to see if the agent is fleeing
         if (fleePerception != null){
-            var gameObjects = fleePerception.getGameObjects();
+            var gameObjects = fleePerception.GetGameObjects();
             if (gameObjects.Length > 0)
             {
                 Vector3 force = Flee(gameObjects[0]);
@@ -40,7 +40,7 @@ public class AutonomousAgent : AIAgent
         //check to see if the agent should be flocking
         if (flockPerception != null)
         {
-            var gameObjects = flockPerception.getGameObjects();
+            var gameObjects = flockPerception.GetGameObjects();
             if (gameObjects.Length > 0)
             {
                 movement.ApplyForce(Cohesion(gameObjects) * data.cohesionWeight);
@@ -49,16 +49,13 @@ public class AutonomousAgent : AIAgent
             }
         }
         //check to see if the agent should be aware of obstacles
-        if (obstaclePerception != null)
+        if (obstaclePerception != null && obstaclePerception.CheckDirection(Vector3.forward))
         {
-            if(obstaclePerception.CheckDirection(Vector3.forward))
+            Vector3 direction = Vector3.zero;
+            if (obstaclePerception.GetOpenDirection(ref direction))
             {
-                Debug.DrawRay(transform.position, transform.rotation * Vector3.forward, Color.red, 0.5f);
-            }
-            else
-            {
-                Debug.DrawRay(transform.position, transform.rotation * Vector3.forward, Color.yellow, 0.5f);
-
+                Debug.DrawRay(transform.position, direction * 5, Color.red, 0.2f);
+                movement.ApplyForce(GetSteeringForce(direction) * data.obstacleWeight);
             }
         }
 
@@ -85,8 +82,8 @@ public class AutonomousAgent : AIAgent
         //}
 
         //update the bounding box for movement
-        float size = 25;
-        transform.position = Utils.Wrap(transform.position, new Vector3(-size, -size, -size), new Vector3(size, size, size));
+        float size = 15;
+        transform.position = Utilities.Wrap(transform.position, new Vector3(-size, -size, -size), new Vector3(size, size, size));
     }
     //steer the object towards the target
     private Vector3 Seek(GameObject go)
@@ -133,7 +130,8 @@ public class AutonomousAgent : AIAgent
                 separation += direction / (distance * distance);
             }
         }
-        return GetSteeringForce(separation);
+        Vector3 force = GetSteeringForce(separation);
+        return force;
     }
     //if the object is flocking, make their velocities similar
     private Vector3 Alignment(GameObject[] gameObjects)
@@ -144,7 +142,9 @@ public class AutonomousAgent : AIAgent
             velocites += movement.Velocity;
         }
         Vector3 averageVelocity = velocites / gameObjects.Length;
-        return GetSteeringForce(averageVelocity);
+
+        Vector3 force = GetSteeringForce(averageVelocity);
+        return force;
     }
     //make this object move in a random direction at a random velocity
     private Vector3 Wander()

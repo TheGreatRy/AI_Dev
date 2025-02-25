@@ -771,7 +771,7 @@ MonoBehaviour:
   seekPerception: {fileID: -730251200866144287, guid: 0c689132d0d4b8b4ca37ab0a8df88836, type: 3}
   fleePerception: {fileID: 0}
   flockPerception: {fileID: -454252702612779040}
-  obstaclePerception: {fileID: 0}
+  obstaclePerception: {fileID: 2927014825707327639}
 --- !u!114 &-4352379602771894420
 MonoBehaviour:
   m_ObjectHideFlags: 0

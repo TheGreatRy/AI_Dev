@@ -23,7 +23,7 @@ public class NavMeshMovement : Movement
 
     private void Update()
     {
-        navMeshAgent.speed = data.maxSpeed;
+        navMeshAgent.speed = data.MaxSpeed;
         navMeshAgent.acceleration = data.maxForce;
         navMeshAgent.angularSpeed = data.turnRate;
     }

@@ -5,7 +5,12 @@ public class AIPatrolState : AIState
 {
     public AIPatrolState(StateAgent agent) : base(agent)
     {
-        CreateTransition(nameof(AIIdleState)).AddCondition(agent.destDistance, Condition.Predicate.Less, 0.5f);
+        CreateTransition(nameof(AIIdleState))
+            .AddCondition(agent.destDistance, Condition.Predicate.Less, 0.5f)
+            .AddCondition(agent.enemySeen, false);
+
+        CreateTransition(nameof(AIChaseState))
+            .AddCondition(agent.enemySeen, true);
     }
 
     public override void OnEnter()
@@ -16,11 +21,11 @@ public class AIPatrolState : AIState
    
     public override void OnUpdate()
     {
-       //
     }
 
     public override void OnExit()
     {
+        
     }
 
 }
