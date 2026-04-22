@@ -5,13 +5,12 @@ public class AIChaseState : AIState
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public AIChaseState(StateAgent agent) : base(agent)
     {
-        CreateTransition(nameof(AIIdleState))
-            .AddCondition(agent.destDistance, Condition.Predicate.LessOrEqual, 3.0f)
-            .AddCondition(agent.enemySeen, false);
-        
         CreateTransition(nameof(AIPatrolState))
-            .AddCondition(agent.destDistance, Condition.Predicate.LessOrEqual, 3.0f)
-            .AddCondition(agent.enemySeen, false);
+            .AddCondition(agent.destDistance, Condition.Predicate.GreaterOrEqual, 2.5f);
+
+        CreateTransition(nameof(AIAttackState))
+            .AddCondition(agent.destDistance, Condition.Predicate.LessOrEqual, 1.5f)
+            .AddCondition(agent.enemySeen, true);
     }
 
     public override void OnEnter()
